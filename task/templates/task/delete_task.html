@@ -1,0 +1,41 @@
+{% extends 'task/base_after_login.html' %}
+
+{% block content %}
+    <div class="container" >
+        <h3>Delete Tasks</h3>
+        <form action="{% url 'task:delete_task' %}" method="post">
+        {% csrf_token %}
+        <table class="table table-bordered">
+            <tr>
+                <td>S. No.</td>
+                <td>Name</td>
+                <td>Description</td>
+                <td>Expiry Date</td>
+                <td>Label</td>
+                <td>Priority</td>
+                <td></td>
+            </tr>
+
+            {% for t in tasks %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ t.name }}</td>
+                    <td>{{ t.description }}</td>
+                    <td>{{ t.expiry }}</td>
+                    <td>{{ t.label }}</td>
+                    <td>{{ t.priority }}</td>
+                    <td>
+                        <input type="checkbox" name="task_id" value="{{ t.id }}">
+                    </td>
+                </tr>
+            {% endfor %}
+
+        </table>
+        <div style="text-align: center">
+            <input type="submit" value="Delete" style="text-align: center">
+        </div>
+
+        </form>
+    </div>
+
+{% endblock %}

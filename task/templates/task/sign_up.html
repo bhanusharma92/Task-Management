@@ -1,0 +1,16 @@
+{% extends 'task/base.html' %}
+
+{% block content %}
+
+    <div class="container">
+        welcome to sign up page
+        <br><br>
+        <form action="{% url 'task:sign_up' %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="sign up">
+        </form>
+    </div>
+
+
+{% endblock %}

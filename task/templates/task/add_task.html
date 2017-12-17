@@ -1,0 +1,16 @@
+{% extends 'task/after_login.html' %}
+
+
+
+{% block content %}
+    <div class="container">
+        <h3>Add task here</h3>
+        <form action="{% url 'task:add_task' %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <input type="submit" value="Add">
+        </form>
+    </div>
+
+{% endblock %}
